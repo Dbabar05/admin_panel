@@ -10,8 +10,9 @@ class MultiTenancyTests {
 
     @Test
     void testTenantContextIsolation() {
-        TenantContext.setCurrentTenant(1L);
-        assertThat(TenantContext.getCurrentTenant()).isEqualTo(1L);
+        java.util.UUID testId = java.util.UUID.randomUUID();
+        TenantContext.setCurrentTenant(testId);
+        assertThat(TenantContext.getCurrentTenant()).isEqualTo(testId);
         
         TenantContext.clear();
         assertThat(TenantContext.getCurrentTenant()).isNull();

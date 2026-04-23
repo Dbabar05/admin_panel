@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.UUID;
 
 @Aspect
 @Component
@@ -17,7 +18,7 @@ public class TenantAspect {
 
     @Before("execution(* com.gym.repository..*(..))")
     public void beforeExecution() {
-        Long tenantId = TenantContext.getCurrentTenant();
+        UUID tenantId = TenantContext.getCurrentTenant();
         if (tenantId != null) {
             Session session = entityManager.unwrap(Session.class);
             session.enableFilter("tenantFilter").setParameter("tenantId", tenantId);

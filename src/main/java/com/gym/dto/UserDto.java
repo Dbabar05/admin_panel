@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class UserDto {
-    private Long id;
+    private java.util.UUID id;
     private String name;
     private String email;
     private String role;
-    private Long tenantId;
+    private java.util.UUID tenantId;
 }

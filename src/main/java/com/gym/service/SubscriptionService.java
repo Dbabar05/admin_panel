@@ -26,7 +26,7 @@ public class SubscriptionService {
         return response;
     }
 
-    public SubscriptionDto updateSubscription(Long id, String status) {
+    public SubscriptionDto updateSubscription(java.util.UUID id, String status) {
         Subscription sub = subscriptionRepository.findById(id).orElseThrow();
         sub.setStatus(status);
         Subscription saved = subscriptionRepository.save(sub);

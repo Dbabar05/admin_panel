@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @Setter
 public class Subscription extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private java.util.UUID id;
 
     @Column(name = "plan_id", nullable = false)
-    private Long planId;
+    private java.util.UUID planId;
 
     @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;

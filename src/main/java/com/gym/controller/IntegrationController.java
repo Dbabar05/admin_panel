@@ -27,7 +27,7 @@ public class IntegrationController {
     }
 
     @PatchMapping("/{id}/toggle")
-    public ResponseEntity<IntegrationDto> toggle(@PathVariable Long id) {
+    public ResponseEntity<IntegrationDto> toggle(@PathVariable java.util.UUID id) {
         return ResponseEntity.ok(integrationService.toggleIntegration(id));
     }
 

@@ -33,7 +33,7 @@ public class PlanService {
         return response;
     }
 
-    public PlanDto updatePlan(Long id, PlanDto planDto) {
+    public PlanDto updatePlan(java.util.UUID id, PlanDto planDto) {
         Plan plan = planRepository.findById(id).orElseThrow();
         BeanUtils.copyProperties(planDto, plan, "id");
         Plan saved = planRepository.save(plan);

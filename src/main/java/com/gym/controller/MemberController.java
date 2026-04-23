@@ -22,7 +22,7 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MemberDto> getMemberById(@PathVariable Long id) {
+    public ResponseEntity<MemberDto> getMemberById(@PathVariable java.util.UUID id) {
         return ResponseEntity.ok(memberService.getMemberById(id));
     }
 

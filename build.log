@@ -1,0 +1,212 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.gym:gym-admin-backend >----------------------
+[INFO] Building Gym Admin Backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ gym-admin-backend ---
+[INFO] Deleting C:\Users\SHUBHAM\Documents\GitHub\admin_panel\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gym-admin-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ gym-admin-backend ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 54 source files with javac [debug release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/security/CustomUserDetailsService.java:[30,108] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/security/CustomUserDetailsService.java:[33,21] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/security/CustomUserDetailsService.java:[34,21] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[24,15] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[26,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[46,15] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[60,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[69,34] cannot find symbol
+  symbol:   method getGymName()
+  location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[70,36] cannot find symbol
+  symbol:   method getOwnerName()
+  location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[71,32] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[72,38] cannot find symbol
+  symbol:   method getPhoneNumber()
+  location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[73,33] cannot find symbol
+  symbol:   method getPlanId()
+  location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[76,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[84,15] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[86,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[94,15] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[96,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[37,25] cannot find symbol
+  symbol:   method getEmail()
+  location: variable loginDto of type com.gym.dto.LoginDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[37,46] cannot find symbol
+  symbol:   method getPassword()
+  location: variable loginDto of type com.gym.dto.LoginDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[43,16] constructor AuthResponseDto in class com.gym.dto.AuthResponseDto cannot be applied to given types;
+  required: no arguments
+  found:    java.lang.String,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[47,47] cannot find symbol
+  symbol:   method getEmail()
+  location: variable userDto of type com.gym.dto.UserDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[53,13] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/MemberService.java:[37,15] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable member of type com.gym.entity.Member
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/IntegrationService.java:[44,25] cannot find symbol
+  symbol:   method getIsActive()
+  location: variable i of type com.gym.entity.Integration
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/SubscriptionService.java:[21,12] cannot find symbol
+  symbol:   method setStartDate(java.time.LocalDateTime)
+  location: variable sub of type com.gym.entity.Subscription
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/SubscriptionService.java:[22,12] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable sub of type com.gym.entity.Subscription
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/SubscriptionService.java:[31,12] cannot find symbol
+  symbol:   method setStatus(java.lang.String)
+  location: variable sub of type com.gym.entity.Subscription
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/exception/GlobalExceptionHandler.java:[21,30] cannot find symbol
+  symbol:   method getStatus()
+  location: variable ex of type com.gym.exception.ApiException
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/exception/GlobalExceptionHandler.java:[23,45] cannot find symbol
+  symbol:   method getStatus()
+  location: variable ex of type com.gym.exception.ApiException
+[INFO] 29 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.637 s
+[INFO] Finished at: 2026-04-22T17:28:20+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project gym-admin-backend: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/security/CustomUserDetailsService.java:[30,108] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/security/CustomUserDetailsService.java:[33,21] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/security/CustomUserDetailsService.java:[34,21] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[24,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[26,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[46,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[60,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[69,34] cannot find symbol
+[ERROR]   symbol:   method getGymName()
+[ERROR]   location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[70,36] cannot find symbol
+[ERROR]   symbol:   method getOwnerName()
+[ERROR]   location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[71,32] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[72,38] cannot find symbol
+[ERROR]   symbol:   method getPhoneNumber()
+[ERROR]   location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[73,33] cannot find symbol
+[ERROR]   symbol:   method getPlanId()
+[ERROR]   location: variable request of type com.gym.dto.TenantDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[76,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[84,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[86,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[94,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable tenant of type com.gym.entity.Tenant
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/TenantService.java:[96,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.gym.dto.ResponseDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[37,25] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable loginDto of type com.gym.dto.LoginDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[37,46] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable loginDto of type com.gym.dto.LoginDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[43,16] constructor AuthResponseDto in class com.gym.dto.AuthResponseDto cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    java.lang.String,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[47,47] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable userDto of type com.gym.dto.UserDto
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/AuthService.java:[53,13] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type com.gym.entity.User
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/MemberService.java:[37,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable member of type com.gym.entity.Member
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/IntegrationService.java:[44,25] cannot find symbol
+[ERROR]   symbol:   method getIsActive()
+[ERROR]   location: variable i of type com.gym.entity.Integration
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/SubscriptionService.java:[21,12] cannot find symbol
+[ERROR]   symbol:   method setStartDate(java.time.LocalDateTime)
+[ERROR]   location: variable sub of type com.gym.entity.Subscription
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/SubscriptionService.java:[22,12] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable sub of type com.gym.entity.Subscription
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/service/SubscriptionService.java:[31,12] cannot find symbol
+[ERROR]   symbol:   method setStatus(java.lang.String)
+[ERROR]   location: variable sub of type com.gym.entity.Subscription
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/exception/GlobalExceptionHandler.java:[21,30] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable ex of type com.gym.exception.ApiException
+[ERROR] /C:/Users/SHUBHAM/Documents/GitHub/admin_panel/src/main/java/com/gym/exception/GlobalExceptionHandler.java:[23,45] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable ex of type com.gym.exception.ApiException
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

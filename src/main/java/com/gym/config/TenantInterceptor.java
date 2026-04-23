@@ -17,9 +17,9 @@ public class TenantInterceptor implements HandlerInterceptor {
         String tenantIdStr = request.getHeader(TENANT_HEADER);
         if (tenantIdStr != null && !tenantIdStr.isEmpty()) {
             try {
-                Long tenantId = Long.valueOf(tenantIdStr);
+                java.util.UUID tenantId = java.util.UUID.fromString(tenantIdStr);
                 TenantContext.setCurrentTenant(tenantId);
-            } catch (NumberFormatException e) {
+            } catch (IllegalArgumentException e) {
                 // Ignore or log error
             }
         }

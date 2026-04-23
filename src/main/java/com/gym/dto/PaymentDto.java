@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 
 @Data
 public class PaymentDto {
-    private Long id;
+    private java.util.UUID id;
     private Double amount;
     private String status;
     private LocalDateTime paymentDate;
     private String method;
-    private Long tenantId;
+    private java.util.UUID tenantId;
 }

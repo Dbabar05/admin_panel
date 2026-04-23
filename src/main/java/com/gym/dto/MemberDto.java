@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class MemberDto {
-    private Long id;
+    private java.util.UUID id;
     private String name;
     private String phone;
     private String status;
-    private Long tenantId;
+    private java.util.UUID tenantId;
 }

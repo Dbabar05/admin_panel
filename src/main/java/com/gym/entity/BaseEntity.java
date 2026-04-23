@@ -17,12 +17,12 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
-@FilterDef(name = "tenantFilter", parameters = @ParamDef(name = "tenantId", type = Long.class))
+@FilterDef(name = "tenantFilter", parameters = @ParamDef(name = "tenantId", type = java.util.UUID.class))
 @Filter(name = "tenantFilter", condition = "tenant_id = :tenantId")
 public abstract class BaseEntity {
 
     @Column(name = "tenant_id", nullable = false, updatable = false)
-    private Long tenantId;
+    private java.util.UUID tenantId;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class IntegrationDto {
-    private Long id;
+    private java.util.UUID id;
     private String name;
     private Boolean isActive;
 }

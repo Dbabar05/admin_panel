@@ -24,7 +24,7 @@ public class MemberService {
         });
     }
 
-    public MemberDto getMemberById(Long id) {
+    public MemberDto getMemberById(java.util.UUID id) {
         Member member = memberRepository.findById(id).orElseThrow();
         MemberDto dto = new MemberDto();
         BeanUtils.copyProperties(member, dto);

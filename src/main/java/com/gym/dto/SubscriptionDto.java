@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 
 @Data
 public class SubscriptionDto {
-    private Long id;
-    private Long tenantId;
-    private Long planId;
+    private java.util.UUID id;
+    private java.util.UUID tenantId;
+    private java.util.UUID planId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String status;

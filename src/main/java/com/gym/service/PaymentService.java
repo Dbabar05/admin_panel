@@ -24,7 +24,7 @@ public class PaymentService {
         });
     }
 
-    public PaymentDto getPaymentById(Long id) {
+    public PaymentDto getPaymentById(java.util.UUID id) {
         Payment payment = paymentRepository.findById(id).orElseThrow();
         PaymentDto dto = new PaymentDto();
         BeanUtils.copyProperties(payment, dto);

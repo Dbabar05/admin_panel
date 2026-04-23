@@ -39,7 +39,7 @@ public class IntegrationService {
         return response;
     }
 
-    public IntegrationDto toggleIntegration(Long id) {
+    public IntegrationDto toggleIntegration(java.util.UUID id) {
         Integration i = integrationRepository.findById(id).orElseThrow();
         i.setIsActive(!i.getIsActive());
         Integration saved = integrationRepository.save(i);

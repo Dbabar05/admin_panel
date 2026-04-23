@@ -1,13 +1,15 @@
 package com.gym.util;
 
-public class TenantContext {
-    private static final ThreadLocal<Long> CURRENT_TENANT = new ThreadLocal<>();
+import java.util.UUID;
 
-    public static void setCurrentTenant(Long tenantId) {
+public class TenantContext {
+    private static final ThreadLocal<UUID> CURRENT_TENANT = new ThreadLocal<>();
+
+    public static void setCurrentTenant(UUID tenantId) {
         CURRENT_TENANT.set(tenantId);
     }
 
-    public static Long getCurrentTenant() {
+    public static UUID getCurrentTenant() {
         return CURRENT_TENANT.get();
     }
 

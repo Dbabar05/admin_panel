@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class PlanDto {
-    private Long id;
+    private java.util.UUID id;
     private String name;
     private Double price;
     private String features;

@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 public class TenantIntegration extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private java.util.UUID id;
 
     @Column(name = "integration_id", nullable = false)
-    private Long integrationId;
+    private java.util.UUID integrationId;
 
     @Column(name = "is_enabled", nullable = false)
     private Boolean isEnabled = true;

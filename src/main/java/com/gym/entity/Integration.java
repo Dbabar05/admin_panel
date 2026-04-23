@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 public class Integration {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private java.util.UUID id;
 
     @Column(nullable = false)
     private String name;

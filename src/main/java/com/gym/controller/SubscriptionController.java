@@ -20,7 +20,7 @@ public class SubscriptionController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<SubscriptionDto> updateStatus(@PathVariable Long id, @RequestParam String status) {
+    public ResponseEntity<SubscriptionDto> updateStatus(@PathVariable java.util.UUID id, @RequestParam String status) {
         return ResponseEntity.ok(subscriptionService.updateSubscription(id, status));
     }
 }

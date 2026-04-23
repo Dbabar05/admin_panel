@@ -22,7 +22,7 @@ public class PaymentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PaymentDto> getPaymentById(@PathVariable Long id) {
+    public ResponseEntity<PaymentDto> getPaymentById(@PathVariable java.util.UUID id) {
         return ResponseEntity.ok(paymentService.getPaymentById(id));
     }
 }
