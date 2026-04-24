@@ -7,6 +7,6 @@ public class UserDto {
     private java.util.UUID id;
     private String name;
     private String email;
+    private String password;
     private String role;
-    private java.util.UUID tenantId;
 }

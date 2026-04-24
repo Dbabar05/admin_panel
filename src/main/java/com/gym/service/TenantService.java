@@ -2,11 +2,13 @@ package com.gym.service;
 
 import com.gym.communication.dispatcher.EventDispatcher;
 import com.gym.communication.event.TenantCreatedEvent;
+import com.gym.dto.OwnerStatusDto;
 import com.gym.dto.ResponseDto;
 import com.gym.dto.TenantDto;
 import com.gym.entity.Tenant;
 import com.gym.repository.TenantRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TenantService {
@@ -26,17 +29,36 @@ public class TenantService {
         Tenant tenant = new Tenant();
         BeanUtils.copyProperties(tenantDto, tenant);
         tenant.setStatus("active");
+        tenant.setOwnerStatus("CREATING");
         Tenant savedTenant = tenantRepository.save(tenant);
+        log.info("Tenant created with id: {}, dispatching TenantCreatedEvent", savedTenant.getId());
 
-        // Dispatch Event
+        // Build and dispatch event
         TenantCreatedEvent event = new TenantCreatedEvent(
                 savedTenant.getId(),
                 savedTenant.getEmail(),
                 savedTenant.getOwnerName()
         );
         eventDispatcher.dispatch(event);
+        log.info("TenantCreatedEvent dispatched for tenant: {}", savedTenant.getId());
 
-        return ResponseDto.builder().code(201).message("Tenant Added Successfully").build();
+        return ResponseDto.builder()
+                .code(201)
+                .message("Tenant created successfully")
+                .tenantId(savedTenant.getId())
+                .ownerCreationStatus("CREATING")
+                .build();
+    }
+
+    public OwnerStatusDto getOwnerStatus(UUID tenantId) {
+        Tenant tenant = tenantRepository.findById(tenantId)
+                .orElseThrow(() -> new RuntimeException("Tenant not found: " + tenantId));
+        return OwnerStatusDto.builder()
+                .tenantId(tenant.getId())
+                .ownerStatus(tenant.getOwnerStatus())
+                .ownerEmail(tenant.getOwnerEmail())
+                .password(tenant.getOwnerTempPassword())
+                .build();
     }
 
     public List<TenantDto> getAllTenants() {

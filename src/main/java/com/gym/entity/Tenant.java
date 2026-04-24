@@ -37,4 +37,14 @@ public class Tenant {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    // Owner provisioning tracking (Option A - stored on tenant)
+    @Column(name = "owner_status")
+    private String ownerStatus; // CREATING / SUCCESS / FAILED
+
+    @Column(name = "owner_email")
+    private String ownerEmail;
+
+    @Column(name = "owner_temp_password")
+    private String ownerTempPassword;
 }

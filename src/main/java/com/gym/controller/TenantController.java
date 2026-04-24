@@ -1,5 +1,6 @@
 package com.gym.controller;
 
+import com.gym.dto.OwnerStatusDto;
 import com.gym.dto.ResponseDto;
 import com.gym.dto.TenantDto;
 import com.gym.service.TenantService;
@@ -62,5 +63,10 @@ public class TenantController {
     public ResponseEntity<ResponseDto> deactivateTenant(@PathVariable UUID id) {
         ResponseDto responseDto = tenantService.deactivateTenant(id);
         return ResponseEntity.ok(responseDto);
+    }
+
+    @GetMapping("/{tenantId}/owner-status")
+    public ResponseEntity<OwnerStatusDto> getOwnerStatus(@PathVariable UUID tenantId) {
+        return ResponseEntity.ok(tenantService.getOwnerStatus(tenantId));
     }
 }

@@ -19,4 +19,8 @@ public class ResponseDto {
     private String userName;
     private String password;
 
+    // Tenant creation extended fields
+    private UUID tenantId;
+    private String ownerCreationStatus; // CREATING / SUCCESS / FAILED
+
 }
