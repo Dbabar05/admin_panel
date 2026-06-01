@@ -3,8 +3,12 @@ package com.gym.service;
 import com.gym.dto.AuthResponseDto;
 import com.gym.dto.LoginDto;
 import com.gym.dto.UserDto;
-import com.gym.entity.User;
-import com.gym.repository.UserRepository;
+import com.gym.entity.AdminRole;
+import com.gym.entity.AdminUser;
+import com.gym.entity.GymRole;
+import com.gym.repository.AdminRoleRepository;
+import com.gym.repository.AdminUserRepository;
+import com.gym.repository.GymRoleRepository;
 import com.gym.security.JwtTokenProvider;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,57 +22,61 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepository;
+    private final AdminUserRepository adminUserRepository;
+    private final AdminRoleRepository adminRoleRepository;
+    private final GymRoleRepository gymRoleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
-    private final com.gym.repository.RoleRepository roleRepository;
 
     public AuthService(AuthenticationManager authenticationManager,
-                       UserRepository userRepository,
+                       AdminUserRepository adminUserRepository,
+                       AdminRoleRepository adminRoleRepository,
+                       GymRoleRepository gymRoleRepository,
                        PasswordEncoder passwordEncoder,
-                       JwtTokenProvider jwtTokenProvider,
-                       com.gym.repository.RoleRepository roleRepository) {
+                       JwtTokenProvider jwtTokenProvider) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
+        this.adminUserRepository = adminUserRepository;
+        this.adminRoleRepository = adminRoleRepository;
+        this.gymRoleRepository = gymRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
-        this.roleRepository = roleRepository;
     }
 
-    public AuthResponseDto login(LoginDto loginDto) {
+    public AuthResponseDto adminLogin(LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getEmail(), loginDto.getPassword()));
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
         String token = jwtTokenProvider.generateToken(authentication);
+        String userType = jwtTokenProvider.getUserType(token);
 
+        if (!"ADMIN".equals(userType)) {
+            throw new RuntimeException("Access denied: Not an Admin user");
+        }
 
-        // 🔥 get email from authentication
-        String email = authentication.getName();
+        AdminUser user = adminUserRepository.findByEmail(loginDto.getEmail())
+                .orElseThrow(() -> new RuntimeException("Admin user not found"));
 
-        // 🔥 fetch your actual entity
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         return new AuthResponseDto(token, user.getId());
     }
 
-    public String register(UserDto userDto) {
-        if (userRepository.findByEmail(userDto.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already exists");
+
+    public String registerAdmin(UserDto userDto) {
+        if (adminUserRepository.findByEmail(userDto.getEmail()).isPresent()) {
+            throw new RuntimeException("Admin email already exists");
         }
 
-        User user = new User();
+        AdminUser user = new AdminUser();
         BeanUtils.copyProperties(userDto, user, "role");
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         
-        com.gym.entity.Role role = roleRepository.findByName(userDto.getRole().toUpperCase())
-                .orElseThrow(() -> new RuntimeException("Role not found: " + userDto.getRole()));
+        AdminRole role = adminRoleRepository.findByName(userDto.getRole().toUpperCase())
+                .orElseThrow(() -> new RuntimeException("Admin Role not found: " + userDto.getRole()));
         user.setRole(role);
         
-        userRepository.save(user);
-
-        return "User registered successfully";
+        adminUserRepository.save(user);
+        return "Admin user registered successfully";
     }
+
+
 }

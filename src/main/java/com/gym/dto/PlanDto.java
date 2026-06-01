@@ -1,11 +1,21 @@
 package com.gym.dto;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PlanDto {
-    private java.util.UUID id;
+
+    private UUID id;
     private String name;
     private Double price;
-    private String features;
+
+    // 🔥 Changed from String → List
+    private List<PlanFeatureDto> features;
 }

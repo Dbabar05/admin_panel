@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "payments")
+@Table(name = "admin_payments")
 @Getter
 @Setter
 public class Payment extends BaseEntity {

@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -34,11 +35,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)) {
 
             String username = jwtTokenProvider.getUsername(token);
+            String userType = jwtTokenProvider.getUserType(token);
             String role = jwtTokenProvider.getRole(token);
-            java.util.List<String> permissions = jwtTokenProvider.getPermissions(token);
+            List<String> permissions = jwtTokenProvider.getPermissions(token);
 
-            // 🔹 Build authorities from token (no DB call)
-            java.util.List<SimpleGrantedAuthority> authorities = new java.util.ArrayList<>();
+            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+            if (StringUtils.hasText(userType)) {
+                authorities.add(new SimpleGrantedAuthority("TYPE_" + userType));
+            }
             if (role != null) {
                 authorities.add(new SimpleGrantedAuthority(role));
             }
@@ -59,7 +63,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     new WebAuthenticationDetailsSource().buildDetails(request)
             );
 
-            // 🔹 Avoid overriding existing authentication
             if (SecurityContextHolder.getContext().getAuthentication() == null) {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }

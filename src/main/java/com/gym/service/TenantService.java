@@ -31,6 +31,7 @@ public class TenantService {
         tenant.setStatus("active");
         tenant.setOwnerStatus("CREATING");
         Tenant savedTenant = tenantRepository.save(tenant);
+
         log.info("Tenant created with id: {}, dispatching TenantCreatedEvent", savedTenant.getId());
 
         // Build and dispatch event

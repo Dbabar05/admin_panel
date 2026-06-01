@@ -40,6 +40,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        
+                        // Separate Admin and Gym paths
+                        .requestMatchers("/api/admin/**").hasAuthority("TYPE_ADMIN")
+                        .requestMatchers("/api/gym/**").hasAuthority("TYPE_GYM")
+                        
                         .requestMatchers(HttpMethod.GET, "/api/**").permitAll() // Adjust as needed
                         .anyRequest().authenticated()
                 ).sessionManagement(session -> session

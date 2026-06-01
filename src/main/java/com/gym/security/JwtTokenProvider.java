@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtTokenProvider {
@@ -19,9 +21,15 @@ public class JwtTokenProvider {
 
     private static final long EXPIRATION_TIME = 4 * 60 * 60 * 1000L; // 4 hours
 
-    // 🔹 Generate token with ROLE included
     public String generateToken(Authentication authentication) {
         String username = authentication.getName();
+
+        String userType = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .filter(auth -> auth.startsWith("TYPE_"))
+                .findFirst()
+                .map(auth -> auth.replace("TYPE_", ""))
+                .orElse("UNKNOWN");
 
         String role = authentication.getAuthorities().stream()
                 .filter(auth -> auth.getAuthority().startsWith("ROLE_"))
@@ -29,15 +37,16 @@ public class JwtTokenProvider {
                 .map(GrantedAuthority::getAuthority)
                 .orElse("ROLE_USER");
 
-        java.util.List<String> permissions = authentication.getAuthorities().stream()
+        List<String> permissions = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
-                .filter(auth -> !auth.startsWith("ROLE_"))
-                .collect(java.util.stream.Collectors.toList());
+                .filter(auth -> !auth.startsWith("ROLE_") && !auth.startsWith("TYPE_"))
+                .collect(Collectors.toList());
 
         return Jwts.builder()
                 .setSubject(username)
-                .claim("role", role) // store role in token
-                .claim("permissions", permissions) // store permissions
+                .claim("userType", userType)
+                .claim("role", role)
+                .claim("permissions", permissions)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(key(), SignatureAlgorithm.HS256)
@@ -52,18 +61,19 @@ public class JwtTokenProvider {
         return getClaims(token).getSubject();
     }
 
-    // 🔹 Extract role
+    public String getUserType(String token) {
+        return getClaims(token).get("userType", String.class);
+    }
+
     public String getRole(String token) {
         return getClaims(token).get("role", String.class);
     }
 
-    // 🔹 Extract permissions
     @SuppressWarnings("unchecked")
-    public java.util.List<String> getPermissions(String token) {
-        return getClaims(token).get("permissions", java.util.List.class);
+    public List<String> getPermissions(String token) {
+        return getClaims(token).get("permissions", List.class);
     }
 
-    // 🔹 Common claim extractor
     private Claims getClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key())
@@ -71,7 +81,6 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody();
     }
-
 
     public boolean validateToken(String token) {
         try {
